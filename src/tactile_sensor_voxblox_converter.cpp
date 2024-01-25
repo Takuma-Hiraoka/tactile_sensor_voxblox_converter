@@ -154,7 +154,7 @@ namespace tactile_sensor_voxblox_converter {
     ros::Subscriber tactile_sub_;
     std::string world_frame_;
     std::string config_filename_;
-    double contact_threshould_ = 5;
+    double contact_threshould_ = 2;
     int debug_ = 0;
 
     class TactileSensor
