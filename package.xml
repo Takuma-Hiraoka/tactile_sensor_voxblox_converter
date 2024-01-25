@@ -13,5 +13,10 @@
   <depend>pcl_ros</depend>
   <depend>sensor_msgs</depend>
   <depend>choreonoid</depend>
+  <depend>voxblox</depend>
+  <depend>voxblox_ros</depend>
+  <depend>voxblox_msgs</depend>
+  <depend>minkindr_conversions</depend>
+  <depend>tf2_ros</depend>
 
 </package>

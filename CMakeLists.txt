@@ -8,6 +8,10 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   pcl_ros
   sensor_msgs
+  voxblox
+  voxblox_ros
+  voxblox_msgs
+  tf2_ros
   )
 find_package(PkgConfig REQUIRED)
 find_package(choreonoid REQUIRED)
