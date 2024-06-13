@@ -72,6 +72,18 @@ namespace tactile_sensor_voxblox_converter {
 	    auto translation_ = info->extract("translation");
 	    auto& translationTmp = *translation_->toListing();
 	    cnoid::Vector3 translation = cnoid::Vector3(translationTmp[0].toDouble(), translationTmp[1].toDouble(), translationTmp[2].toDouble());
+	    // 接触をsdfに変換する際にどうしてもめり込みが発生してしまうことに対するでっち上げ
+	    // 接触点を本来の場所より外側にする
+	    // rotation
+	    cnoid::ValueNodePtr rotation_ = info->extract("rotation");
+	    if(rotation_){
+	      cnoid::ListingPtr rotationTmp = rotation_->toListing();
+	      if(rotationTmp->size() == 4){
+		cnoid::Matrix3 angleAxis = cnoid::AngleAxisd(rotationTmp->at(3)->toDouble(),
+						    cnoid::Vector3{rotationTmp->at(0)->toDouble(), rotationTmp->at(1)->toDouble(), rotationTmp->at(2)->toDouble()}).toRotationMatrix();
+		translation += angleAxis * cnoid::Vector3(0,0,-0.03);
+	      }
+	    }
 	    sensor.translation = translation;
 	    this->tactileSensorList_.push_back(sensor);
 	  }
